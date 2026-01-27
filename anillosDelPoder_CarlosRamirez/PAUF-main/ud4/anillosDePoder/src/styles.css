@@ -1,0 +1,206 @@
+/* You can add global styles to this file, and also import other style files */
+.hero {
+  height: 300px;
+  background-image: url("./assets/img/fondoCabecera.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #f5f5f5;
+}
+
+.overlay {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero p {
+  max-width: 600px;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.acciones button {
+  margin: 0 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: transparent;
+  border: 2px solid #c9aa71;
+  color: #c9aa71;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.acciones button:hover {
+  background-color: #c9aa71;
+  color: #000;
+}
+
+.barraBusqueda {
+  background-color:blanchedalmond;
+  align-content: center;
+  height: 100px;
+  align-items: center;
+}
+
+.formulario {
+  padding-top: 10px;             
+  display: flex;
+  justify-content: center;    
+  align-items: center;  
+  color: #000;
+}
+
+.busqueda {
+   padding-top: 10px;   
+   display: flex;
+   justify-content: center;    
+   align-items: center;  
+   color: #000;
+}
+
+.busqueda button {
+   margin-left: 10px;
+}
+
+.tabla {
+   border: rgb(255, 234, 0) 2px solid;
+   border-radius: 5px;
+   background-color: bisque;
+   align-items: center;
+   color:#000;
+   margin-left: 30%;
+   margin-right: 30%;
+   padding: 20px ;
+   margin-top: 20px;
+}
+
+tbody {
+  border: blue 5px solid;
+}
+tr {
+  border: green 5px solid;
+}
+
+/* --- Contenedor Principal del Formulario --- */
+form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  max-width: 600px; /* Ancho máximo para que no se estire demasiado */
+  margin: 2rem auto; /* Centrado horizontalmente */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio uniforme entre cada campo */
+}
+
+/* --- Etiquetas (Labels) --- */
+form label {
+  display: block;
+  font-weight: 600;
+  color: #374151; /* Gris oscuro para lectura fácil */
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* --- Inputs de Texto y Textareas (PrimeNG + Nativos) --- */
+input[pInputText],
+textarea[pTextarea] {
+  width: 100%; /* Ocupar todo el ancho disponible */
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Estado Focus (cuando escribes) */
+input[pInputText]:focus,
+textarea[pTextarea]:focus {
+  border-color: #6366f1; /* Color primario (puedes cambiarlo) */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+textarea[pTextarea] {
+  resize: vertical; /* Permite cambiar tamaño solo hacia abajo */
+  min-height: 100px;
+}
+
+/* --- Selectores de PrimeNG (Dropdowns) --- */
+p-select {
+  display: block;
+  width: 100%;
+}
+
+/* Forzar que el componente interno de PrimeNG ocupe el 100% */
+::ng-deep p-select .p-select {
+  width: 100%;
+}
+
+/* --- Botón de Afinidad Mágica (SelectButton) --- */
+p-selectbutton {
+  display: block;
+  width: 100%;
+}
+
+/* --- Mensajes de Error (Validación) --- */
+small {
+  color: #dc2626; /* Rojo error */
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 500;
+}
+
+/* =======================================================
+   NUEVO: Estilos para Botones (Guardar + Limpiar)
+   ======================================================= */
+
+/* Contenedor que alinea los botones en fila */
+.form-actions {
+  display: flex;
+  gap: 1rem;       /* Espacio entre botones */
+  margin-top: 1rem;
+}
+
+/* Hace que ambos botones ocupen el mismo ancho (50% c/u) */
+.form-actions p-button {
+  flex: 1;
+}
+
+/* Estilo base para TODOS los botones (ancho completo dentro de su caja) */
+::ng-deep p-button button {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Estilo específico para el botón LIMPIAR (Gris claro) */
+::ng-deep .btn-secondary button {
+  background-color: #f3f4f6 !important;
+  color: #4b5563 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+/* Efecto hover para botón LIMPIAR */
+::ng-deep .btn-secondary button:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
