@@ -14,4 +14,5 @@ export const routes: Routes = [
     {path:'detalleRaza', component:DetalleRaza},
     {path:'personajes', component:BuscarPersonaje},
     {path: 'editar/:id', component: DetallePersonaje},
+    {path: 'crearPersonaje', component: DetallePersonaje},
 ];
