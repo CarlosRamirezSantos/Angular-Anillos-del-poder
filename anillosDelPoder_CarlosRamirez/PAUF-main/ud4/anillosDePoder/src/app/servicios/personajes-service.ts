@@ -15,10 +15,6 @@ export class PersonajesService {
     return this.http.get<any[]>(`${this.apiESDLA}listaPersonajes`);
   }
 
-  deletePersonaje(id:number): Observable<any> {
-    return this.http.delete<any>(`${this.apiESDLA}borrarPersonaje/${id}`);
-  }
-
   insertarPersonaje(data:any): Observable<any> {
     return this.http.post<any>(`${this.apiESDLA}insertarPersonaje`, data);
   }

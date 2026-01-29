@@ -47,14 +47,4 @@ export class BuscarPersonaje implements OnInit {
       }
     })
   }
-
-  borrarPersonaje(id:number){
-    this.personajeService.deletePersonaje(id).subscribe({
-      next: data => {
-        this.cargarPersonajes();
-      }, error: err => {
-        this.error = 'Se ha producido un error'
-      }
-    })
-  }
 }

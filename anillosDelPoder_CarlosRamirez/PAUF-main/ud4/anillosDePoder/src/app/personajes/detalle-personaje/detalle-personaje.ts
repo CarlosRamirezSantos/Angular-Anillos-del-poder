@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PersonajesService } from '../../servicios/personajes-service';
-
-// Módulos de PrimeNG (Usando los que tú usas)
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select'; // Para el desplegable de Raza
-import { DatePickerModule } from 'primeng/datepicker'; // Para la fecha
-import { InputNumberModule } from 'primeng/inputnumber'; // Para la corrupción
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker'; 
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-detalle-personaje',
@@ -30,10 +28,8 @@ export class DetallePersonaje implements OnInit {
   esEdicion: boolean = false;
   idPersonaje: number | null = null;
 
-  // Lista de razas para el desplegable
   razas = ['HUMANO', 'ELFO', 'ENANO', 'HOBBIT', 'MAIAR', 'OSCURO'];
 
-  // TU ESTILO: Definimos el formulario directamente aquí
   formulario: FormGroup = new FormGroup({
     nombre: new FormControl('', [
       Validators.required, 
@@ -59,7 +55,7 @@ export class DetallePersonaje implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Comprobamos si venimos a editar (si hay ID en la URL)
+  
     const id = this.route.snapshot.paramMap.get('id');
     
     if (id) {
@@ -88,7 +84,6 @@ cargarPersonaje(id: number) {
         this.personajeService.actualizarPersonaje(this.idPersonaje, datosGuardar).subscribe({
             next: () => {
                 alert("Personaje actualizado correctamente");
-                this.router.navigate(['/personajes']);
             },
             error: (e) => alert("Error al actualizar")
         });
@@ -96,8 +91,8 @@ cargarPersonaje(id: number) {
 
         this.personajeService.insertarPersonaje(datosGuardar).subscribe({
             next: () => {
-                alert("Personaje creado correctamente");
-                this.router.navigate(['/personajes']);
+              alert("Personaje creado correctamente"); //se actualiza con el alert porque recarga la pagina
+              this.limpiar(); //si quitamos el alert la funcion funciona perfectamente y limpia todos los campos
             },
             error: (e) => alert("Error al crear")
         });
@@ -110,8 +105,13 @@ cargarPersonaje(id: number) {
   }
 
   limpiar() {
-    this.formulario.reset({
-        nivelCorrupcion: 0 
-    });
+
+    this.formulario.get('nombre')?.setValue('');
+    this.formulario.get('raza')?.setValue(null);
+    this.formulario.get('fechaNacimiento')?.setValue(null);
+    this.formulario.get('nivelCorrupcion')?.setValue(0);
+    
+    this.formulario.markAsPristine();
+    this.formulario.markAsUntouched();
   }
 }
