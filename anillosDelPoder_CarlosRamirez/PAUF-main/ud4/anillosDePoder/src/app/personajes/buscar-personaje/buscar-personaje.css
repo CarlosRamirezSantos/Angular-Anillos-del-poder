@@ -1,0 +1,33 @@
+.contenedor-oscuro {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Alineación a la derecha */
+.header-acciones {
+    display: flex; 
+    justify-content: flex-end; 
+    margin-bottom: 20px;
+}
+
+/* Colores oscuros para la tabla */
+:host ::ng-deep .p-datatable .p-datatable-header,
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th,
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td,
+:host ::ng-deep .p-datatable .p-datatable-footer,
+:host ::ng-deep .p-paginator {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr:hover {
+    background-color: #1a1a1a !important;
+}
+
+/* Separación botones */
+:host ::ng-deep .p-button.mr-2 {
+    margin-right: 0.5rem;
+}

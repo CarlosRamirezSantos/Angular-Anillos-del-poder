@@ -1,11 +1,14 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PersonajesService } from '../../servicios/personajes-service';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-buscar-personaje',
-  imports: [],
+  imports: [ButtonModule, TableModule, CommonModule],
   templateUrl: './buscar-personaje.html',
   styleUrl: './buscar-personaje.css',
 })
@@ -24,6 +27,9 @@ export class BuscarPersonaje implements OnInit {
     this.route.navigate(["/editar",id])
   }
 
+  crearPersonaje() {
+    this.route.navigate(['/crearPersonaje']);
+  }
   ngOnInit(): void {
     this.cargarPersonajes();
     
@@ -36,6 +42,16 @@ export class BuscarPersonaje implements OnInit {
         console.log(data)
         this.personajes = data
         this.cdr.detectChanges()
+      }, error: err => {
+        this.error = 'Se ha producido un error'
+      }
+    })
+  }
+
+  borrarPersonaje(id:number){
+    this.personajeService.deletePersonaje(id).subscribe({
+      next: data => {
+        this.cargarPersonajes();
       }, error: err => {
         this.error = 'Se ha producido un error'
       }

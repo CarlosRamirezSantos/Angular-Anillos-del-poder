@@ -49,7 +49,7 @@ export class Detalle {
     ])
   });
 
-   enviar() {
+  enviar() {
     if (this.formulario.valid) {
       alert("Anillo forjado correctamente");
       this.limpiar();

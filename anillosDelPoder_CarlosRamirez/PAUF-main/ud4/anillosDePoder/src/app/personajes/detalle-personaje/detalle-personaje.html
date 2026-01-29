@@ -1,1 +1,85 @@
-<p>detalle-personaje works!</p>
+<div class="contenedor-oscuro">
+    
+    <div class="mb-4">
+        <p-button 
+            label="Volver" 
+            icon="pi pi-arrow-left" 
+            severity="secondary" 
+            [routerLink]="['/personajes']">
+        </p-button>
+    </div>
+
+    <div class="card-formulario">
+        <h2 class="text-white text-center mb-4">
+            {{ esEdicion ? 'Editar Personaje' : 'Crear Personaje' }}
+        </h2>
+
+        <form [formGroup]="formulario" (ngSubmit)="enviar()" class="flex flex-column gap-3">
+
+            <div class="campo">
+                <label class="block text-white mb-2">Nombre</label>
+                <input pInputText formControlName="nombre" placeholder="Nombre del personaje" class="w-full"/>
+                
+                @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+                    <small class="text-red-500">El nombre es obligatorio (min 3 letras)</small>
+                }
+            </div>
+
+            <div class="campo">
+                <label class="block text-white mb-2">Raza</label>
+                <p-select 
+                    [options]="razas" 
+                    formControlName="raza" 
+                    placeholder="Selecciona una raza" 
+                    [style]="{'width':'100%'}">
+                </p-select>
+
+                @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
+                    <small class="text-red-500">La raza es obligatoria</small>
+                }
+            </div>
+
+            <div class="campo">
+                <label class="block text-white mb-2">Fecha de Nacimiento</label>
+                <p-datepicker 
+                    formControlName="fechaNacimiento" 
+                    dateFormat="dd/mm/yy" 
+                    [showIcon]="true" 
+                    styleClass="w-full">
+                </p-datepicker>
+
+                @if (formulario.get('fechaNacimiento')?.invalid && formulario.get('fechaNacimiento')?.touched) {
+                    <small class="text-red-500">La fecha es obligatoria</small>
+                }
+            </div>
+
+            <div class="campo">
+                <label class="block text-white mb-2">Nivel de Corrupción (0-100)</label>
+                <p-inputnumber 
+                    formControlName="nivelCorrupcion" 
+                    [showButtons]="true" 
+                    [min]="0" 
+                    [max]="100" 
+                    styleClass="w-full">
+                </p-inputnumber>
+            </div>
+
+            <div class="flex justify-content-end gap-2 mt-4">
+                <p-button 
+                    label="Limpiar" 
+                    severity="secondary" 
+                    type="button" 
+                    (onClick)="limpiar()">
+                </p-button>
+
+                <p-button 
+                    [label]="esEdicion ? 'Actualizar' : 'Guardar'" 
+                    icon="pi pi-check" 
+                    severity="warn" 
+                    type="submit">
+                </p-button>
+            </div>
+
+        </form>
+    </div>
+</div>

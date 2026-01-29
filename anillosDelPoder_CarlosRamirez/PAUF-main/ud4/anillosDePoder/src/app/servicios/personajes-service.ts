@@ -14,4 +14,20 @@ export class PersonajesService {
   getAllPersonajes(): Observable<any []> {
     return this.http.get<any[]>(`${this.apiESDLA}listaPersonajes`);
   }
+
+  deletePersonaje(id:number): Observable<any> {
+    return this.http.delete<any>(`${this.apiESDLA}borrarPersonaje/${id}`);
+  }
+
+  insertarPersonaje(data:any): Observable<any> {
+    return this.http.post<any>(`${this.apiESDLA}insertarPersonaje`, data);
+  }
+
+  actualizarPersonaje(id:number, data:any): Observable<any> {
+    return this.http.put<any>(`${this.apiESDLA}actualizarPersonaje/${id}`, data);
+  }
+
+  getPersonaje(id:number): Observable<any> {
+    return this.http.get<any>(`${this.apiESDLA}obtenerPersonaje/${id}`);
+  }
 }
