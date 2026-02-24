@@ -1,0 +1,54 @@
+<div class="stats-container">
+  <div class="header-banner">
+    <h1 class="stats-title">Crónicas de la Tierra Media</h1>
+    <span class="stats-subtitle">Registro de Batallas y Conocimiento</span>
+  </div>
+
+  <div class="stats-grid">
+    <p-card class="stat-card">
+      <div class="stat-content">
+        <i class="pi pi-book" style="font-size: 2.5rem; color: #6366f1"></i>
+        <div class="stat-data">
+          <span class="stat-label">Partidas Jugadas</span>
+          <span class="stat-value">{{ stats.jugadas }}</span>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="stat-card win-border">
+      <div class="stat-content">
+        <i class="pi pi-check-circle" style="font-size: 2.5rem; color: #22c55e"></i>
+        <div class="stat-data">
+          <span class="stat-label">Victorias</span>
+          <span class="stat-value win-text">{{ stats.victorias }}</span>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="stat-card loss-border">
+      <div class="stat-content">
+        <i class="pi pi-times-circle" style="font-size: 2.5rem; color: #ef4444"></i>
+        <div class="stat-data">
+          <span class="stat-label">Derrotas</span>
+          <span class="stat-value loss-text">{{ stats.derrotas }}</span>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="stat-card">
+      <div class="stat-content">
+        <div class="winrate-circle" [style.border-color]="getColorWinRate()">
+            {{ porcentajeVictorias }}%
+        </div>
+        <div class="stat-data">
+          <span class="stat-label">Tasa de Éxito</span>
+          <span class="stat-sublabel">Dominio del Trivial</span>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="stats-footer" *ngIf="stats.jugadas === 0">
+    <p>Aún no has comenzado tu viaje. ¡Ve al Trivial y desafía a Sauron!</p>
+  </div>
+</div>

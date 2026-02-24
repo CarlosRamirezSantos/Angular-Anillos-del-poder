@@ -1,0 +1,41 @@
+<div class="game-container">
+  <div *ngIf="!juegoTerminado && !preguntaActual" class="start-screen">
+    <p-card header="Desafío de la Tierra Media" subheader="¿Cuánto sabes realmente?">
+      <p>Acierta 5 preguntas seguidas para ganar. Un error y Sauron vencerá.</p>
+      <ng-template pTemplate="footer">
+        <p-button label="Comenzar Desafío" icon="pi pi-bolt" (onClick)="iniciarNuevaPartida()"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+
+  <div *ngIf="!juegoTerminado && preguntaActual" class="question-screen">
+    <div class="progress-info">
+      <span class="badge">Racha actual: {{ aciertos }} / 5</span>
+    </div>
+
+    <p-card>
+      <p class="question-text">{{ preguntaActual.pregunta }}</p>
+
+      <div class="options-grid">
+        <p-button [label]="preguntaActual.respuesta1" severity="secondary" [disabled]="botonesBloqueados" (onClick)="responder(1)"></p-button>
+        <p-button [label]="preguntaActual.respuesta2" severity="secondary" [disabled]="botonesBloqueados" (onClick)="responder(2)"></p-button>
+        <p-button [label]="preguntaActual.respuesta3" severity="secondary" [disabled]="botonesBloqueados" (onClick)="responder(3)"></p-button>
+        <p-button [label]="preguntaActual.respuesta4" severity="secondary" [disabled]="botonesBloqueados" (onClick)="responder(4)"></p-button>
+      </div>
+
+      <div *ngIf="mostrarFeedback" class="feedback-overlay" [ngClass]="{'correct': esCorrecto, 'incorrect': !esCorrecto}">
+        <h2>{{ feedbackMensaje }}</h2>
+      </div>
+    </p-card>
+  </div>
+
+  <div *ngIf="juegoTerminado" class="end-screen">
+    <p-card [header]="aciertos === 5 ? '¡VICTORIA!' : 'FIN DEL CAMINO'">
+      <p class="final-msg">{{ mensajeFinal }}</p>
+      <p>Total de aciertos: {{ aciertos }}</p>
+      <ng-template pTemplate="footer">
+        <p-button label="Volver a Intentarlo" icon="pi pi-refresh" severity="warn" (onClick)="iniciarNuevaPartida()"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
